@@ -38,6 +38,9 @@ def get_update():
             restart_viscon_support_app()
         case "VisconSupportAPI":
             restart_viscon_support_api()
+        case "test":
+            restart_viscon_support_app()
+            restart_viscon_support_api()
 
     return "ok"
 
