@@ -7,13 +7,19 @@ config = load_json("config.json")
 
 def restart_viscon_support_app():
     sudo_pass = config["sudo_password"]
-    subprocess.run(f"echo '{sudo_pass}' | sudo -S systemctl restart viscon-support-app")
+    subprocess.run(
+        ["echo", f"'{sudo_pass}'", "|", "sudo", "-S", "systemctl", "restart", "viscon-support-app"],
+        shell=True, check=True
+    )
     send_notification("Git Notifier", "Restarted VisconSupportApp")
 
 
 def restart_viscon_support_api():
     sudo_pass = config["sudo_password"]
-    subprocess.run(f"echo '{sudo_pass}' | sudo -S systemctl restart viscon-support-api")
+    subprocess.run(
+        ["echo", f"'{sudo_pass}'", "|", "sudo", "-S", "systemctl", "restart", "viscon-support-app"],
+        shell=True, check=True
+    )
     send_notification("Git Notifier", "Restarted VisconSupportAPI")
 
 

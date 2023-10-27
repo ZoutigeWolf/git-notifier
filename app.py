@@ -26,12 +26,12 @@ def get_update():
         return "Invalid signature", 403
 
     if event != "push":
-        return "ok"
+        return "Not a push event"
 
     data = request.json
 
     if data["repository"]["master_branch"] != data["ref"].split("/")[-1]:
-        return "ok"
+        return "not master branch"
 
     match data["repository"]["name"]:
         case "VisconSupportApp":
