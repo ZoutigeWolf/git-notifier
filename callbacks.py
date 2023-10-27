@@ -9,7 +9,7 @@ config = load_json("config.json")
 def restart_viscon_support_app():
     wd = os.getcwd()
 
-    os.chdir("/home/zouti/viscon-support-app")
+    os.chdir("/home/zouti/VisconSupportApp")
 
     p = subprocess.Popen(["git", "pull"])
     p.wait()
@@ -29,7 +29,7 @@ def restart_viscon_support_app():
 def restart_viscon_support_api():
     wd = os.getcwd()
 
-    os.chdir("/home/zouti/viscon-support-api")
+    os.chdir("/home/zouti/VisconSupportAPI")
 
     p = subprocess.Popen(["git", "pull"])
     p.wait()
