@@ -17,7 +17,7 @@ def restart_viscon_support_app():
     sudo_pass = config["sudo_password"]
 
     subprocess.run(
-        ["echo", f"'{sudo_pass}'", "|", "sudo", "-S", "systemctl", "restart", "viscon-support-app"],
+        ["echo", f"\"{sudo_pass}\"", "|", "sudo", "-S", "systemctl", "restart", "viscon-support-app"],
         shell=True, check=True
     )
 
@@ -37,7 +37,7 @@ def restart_viscon_support_api():
     sudo_pass = config["sudo_password"]
 
     subprocess.run(
-        ["echo", f"'{sudo_pass}'", "|", "sudo", "-S", "systemctl", "restart", "viscon-support-api"],
+        ["echo", f"\"{sudo_pass}\"", "|", "sudo", "-S", "systemctl", "restart", "viscon-support-api"],
         shell=True, check=True
     )
 
