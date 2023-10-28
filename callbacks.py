@@ -14,9 +14,9 @@ def restart_viscon_support_app():
     p = subprocess.Popen(["git", "pull"])
     p.wait()
 
-    subprocess.call(["./restart.sh", config["sudo_password"], "viscon-support-app"])
-
     os.chdir(wd)
+
+    subprocess.call(["./restart.sh", config["sudo_password"], "viscon-support-app"])
 
     send_notification("Git Notifier", "Restarted VisconSupportApp")
 
@@ -29,9 +29,9 @@ def restart_viscon_support_api():
     p = subprocess.Popen(["git", "pull"])
     p.wait()
 
-    subprocess.call(["./restart.sh", config["sudo_password"], "viscon-support-api"])
-
     os.chdir(wd)
+
+    subprocess.call(["./restart.sh", config["sudo_password"], "viscon-support-api"])
 
     send_notification("Git Notifier", "Restarted VisconSupportAPI")
 
