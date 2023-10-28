@@ -14,10 +14,7 @@ def restart_viscon_support_app():
     p = subprocess.Popen(["git", "pull"])
     p.wait()
 
-    sudo_pass = config["sudo_password"]
-
-    p = subprocess.Popen(["echo", f"\"{sudo_pass}\"", "|", "sudo", "-S", "systemctl", "restart", "viscon-support-app"])
-    p.wait()
+    subprocess.call(["./restart.sh", config["sudo_password"], "viscon-support-app"])
 
     os.chdir(wd)
 
@@ -32,10 +29,7 @@ def restart_viscon_support_api():
     p = subprocess.Popen(["git", "pull"])
     p.wait()
 
-    sudo_pass = config["sudo_password"]
-
-    p = subprocess.Popen(["echo", f"\"{sudo_pass}\"", "|", "sudo", "-S", "systemctl", "restart", "viscon-support-api"])
-    p.wait()
+    subprocess.call(["./restart.sh", config["sudo_password"], "viscon-support-api"])
 
     os.chdir(wd)
 
