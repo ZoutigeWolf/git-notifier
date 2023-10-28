@@ -6,34 +6,35 @@ from zouti_utils.json import load_json
 config = load_json("config.json")
 
 
-def restart_viscon_support_app():
-    wd = os.getcwd()
+def restart_viscon_support_app() -> None:
+    git_pull("/home/zouti/VisconSupportApp")
 
-    os.chdir("/home/zouti/VisconSupportApp")
-
-    p = subprocess.Popen(["git", "pull"])
-    p.wait()
-
-    os.chdir(wd)
-
-    subprocess.call(["./restart.sh", config["sudo_password"], "viscon-support-app"])
+    restart_service("viscon-support-app")
 
     send_notification("Git Notifier", "Restarted VisconSupportApp")
 
 
-def restart_viscon_support_api():
+def restart_viscon_support_api() -> None:
+    git_pull("/home/zouti/VisconSupportAPI")
+
+    restart_service("viscon-support-api")
+
+    send_notification("Git Notifier", "Restarted VisconSupportAPI")
+
+
+def git_pull(directory: str) -> None:
     wd = os.getcwd()
 
-    os.chdir("/home/zouti/VisconSupportAPI")
+    os.chdir(directory)
 
     p = subprocess.Popen(["git", "pull"])
     p.wait()
 
     os.chdir(wd)
 
-    subprocess.call(["./restart.sh", config["sudo_password"], "viscon-support-api"])
 
-    send_notification("Git Notifier", "Restarted VisconSupportAPI")
+def restart_service(service: str) -> int:
+    return subprocess.call(["sh", "restart.sh", config["sudo_password"], service])
 
 
 def send_notification(message: str, description: str):
