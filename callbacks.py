@@ -22,6 +22,14 @@ def restart_viscon_support_api() -> None:
     send_notification("Git Notifier", "Restarted VisconSupportAPI")
 
 
+def restart_tcp_file_server() -> None:
+    git_pull("/home/zouti/TCPFileServer")
+
+    restart_service("tcp-file-server")
+
+    send_notification("Git Notifier", "Restarted TCPFileServer")
+
+
 def git_pull(directory: str) -> None:
     wd = os.getcwd()
 

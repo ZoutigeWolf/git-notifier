@@ -3,7 +3,11 @@ import hashlib
 import hmac
 from zouti_utils.json import load_json
 
-from callbacks import restart_viscon_support_app, restart_viscon_support_api
+from callbacks import (
+    restart_viscon_support_app,
+    restart_viscon_support_api,
+    restart_tcp_file_server
+)
 
 app = Flask(__name__)
 
@@ -38,6 +42,8 @@ def get_update():
             restart_viscon_support_app()
         case "VisconSupportAPI":
             restart_viscon_support_api()
+        case "TCPFileServer":
+            restart_tcp_file_server()
 
     return "ok"
 
