@@ -30,6 +30,14 @@ def restart_tcp_file_server() -> None:
     send_notification("Git Notifier", "Restarted TCPFileServer")
 
 
+def restart_jonko_tracker_api() -> None:
+    git_pull("/home/zouti/JonkoTrackerAPI")
+
+    restart_service("jonko-tracker-api")
+
+    send_notification("Git Notifier", "Restarted JonkoTrackerAPI")
+
+
 def git_pull(directory: str) -> None:
     wd = os.getcwd()
 
