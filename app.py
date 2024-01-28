@@ -6,7 +6,8 @@ from zouti_utils.json import load_json
 from callbacks import (
     restart_viscon_support_app,
     restart_viscon_support_api,
-    restart_tcp_file_server
+    restart_tcp_file_server,
+    restart_jonko_tracker_api
 )
 
 app = Flask(__name__)
@@ -44,6 +45,8 @@ def get_update():
             restart_viscon_support_api()
         case "TCPFileServer":
             restart_tcp_file_server()
+        case "JonkoTrackerAPI":
+            restart_jonko_tracker_api()
 
     return "ok"
 
